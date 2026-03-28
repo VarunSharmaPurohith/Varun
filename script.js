@@ -155,3 +155,52 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+// Updated booking form submission with local storage
+const bookingForm = document.getElementById('bookingForm');
+if (bookingForm) {
+    bookingForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const email = document.getElementById('email').value;
+        const ritual = document.getElementById('ritual').value;
+        const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value;
+        const address = document.getElementById('address').value;
+        const details = document.getElementById('details').value;
+        
+        if (!name || !phone || !ritual || !date) {
+            showAlert('Please fill all required fields 🙏', 'error');
+            return;
+        }
+        
+        // Create booking object
+        const booking = {
+            id: Date.now().toString(),
+            name: name,
+            phone: phone,
+            email: email,
+            ritual: ritual,
+            eventDate: date,
+            eventTime: time,
+            address: address,
+            details: details,
+            status: 'pending',
+            createdAt: new Date().toISOString()
+        };
+        
+        // Save to localStorage
+        let bookings = JSON.parse(localStorage.getItem('purohithBookings')) || [];
+        bookings.unshift(booking); // Add to beginning
+        localStorage.setItem('purohithBookings', JSON.stringify(bookings));
+        
+        // Also send to WhatsApp as backup
+        const message = `*New Ritual Booking*%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Ritual:* ${ritual}%0A*Date:* ${date}%0A*Address:* ${address || 'Not specified'}%0A*Details:* ${details || 'Not specified'}%0A%0A*View in Dashboard:* Check your website dashboard!`;
+        const whatsappNumber = '918328059590';
+        window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+        
+        showAlert('Booking saved! Check dashboard to manage bookings. 🙏', 'success');
+        bookingForm.reset();
+    });
+}
