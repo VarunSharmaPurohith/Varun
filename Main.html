@@ -1,10 +1,9 @@
-Varun/
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Purohith Services - Hindu Rituals & Ceremonies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Purohith Services | Vedic Rituals | GauSeva | Cow Dung Cakes & Goumutra</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
@@ -14,838 +13,576 @@ Varun/
         }
 
         body {
-            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
             line-height: 1.6;
-            color: #2c2418;
-            background: #fffaf5;
+            background: linear-gradient(135deg, #fffaf5 0%, #fff5ed 100%);
+            overflow-x: hidden;
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f0e5d8; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #FFD700, #FFA500); border-radius: 10px; }
 
-        /* Navigation */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
         nav {
-            background: rgba(139, 69, 19, 0.95);
+            background: rgba(139, 69, 19, 0.96);
             backdrop-filter: blur(10px);
             color: white;
+            padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
-
         .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            flex-wrap: wrap;
+            position: relative;
         }
-
         .logo {
             display: flex;
             align-items: center;
             gap: 12px;
+            font-size: 1.3rem;
         }
-
-        .logo i {
-            font-size: 2rem;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .logo h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-        }
-
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
-
         .nav-links a {
             color: white;
             text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
             cursor: pointer;
+            padding: 6px 12px;
+            font-weight: 500;
+            transition: 0.3s;
         }
-
-        .nav-links a:hover {
-            color: #FFD700;
-        }
-
+        .nav-links a:hover { color: #FFD700; transform: translateY(-2px); }
         .mobile-menu {
             display: none;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
         }
-
-        /* Hero Section */
+        
+        /* Panchanga Widget */
+        .panchanga-widget {
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(8px);
+            border-radius: 40px;
+            padding: 6px 16px;
+            margin-left: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-left: 3px solid #FFD700;
+            border-right: 1px solid rgba(255,215,0,0.5);
+            white-space: nowrap;
+            font-family: 'Poppins', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #FFF8E7;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            transition: all 0.2s;
+            cursor: default;
+        }
+        .panchanga-widget i { font-size: 1rem; color: #FFD700; }
+        .panchanga-widget .tithi-text { font-weight: 600; letter-spacing: 0.3px; }
+        .panchanga-widget .date-text { font-size: 0.7rem; opacity: 0.9; }
+        .panchanga-widget .end-time { font-size: 0.65rem; background: rgba(255,215,0,0.25); padding: 2px 6px; border-radius: 20px; margin-left: 5px; }
+        @media (max-width: 900px) {
+            .panchanga-widget { margin-left: 10px; padding: 4px 12px; font-size: 0.7rem; }
+            .panchanga-widget .date-text { display: none; }
+            .panchanga-widget .end-time { display: none; }
+        }
+        @media (max-width: 768px) {
+            .nav-content { justify-content: space-between; }
+            .panchanga-widget { order: 2; margin-left: auto; margin-right: 10px; padding: 4px 10px; }
+            .mobile-menu { order: 3; }
+            .nav-links { order: 4; }
+            .logo { order: 1; }
+        }
+        
+        .btn-primary, .btn-secondary, .btn-donate {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-primary { background: linear-gradient(135deg, #FFD700, #FFA500); color: #8B4513; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(255,215,0,0.4); }
+        .btn-secondary { background: transparent; color: white; border: 2px solid #FFD700; }
+        .btn-secondary:hover { background: #FFD700; color: #8B4513; }
+        
         .hero {
             background: linear-gradient(135deg, rgba(139,69,19,0.85), rgba(90,45,12,0.9)), url('https://images.pexels.com/photos/1070350/pexels-photo-1070350.jpeg?auto=compress&cs=tinysrgb&w=1600');
             background-size: cover;
-            background-position: center;
             background-attachment: fixed;
             color: white;
             text-align: center;
-            padding: 120px 0;
-            position: relative;
+            padding: 100px 0;
         }
+        .hero h1 { font-size: 2.8rem; font-family: 'Cormorant Garamond', serif; }
 
-        .hero::before {
-            content: 'ॐ';
-            position: absolute;
-            font-size: 20rem;
-            opacity: 0.05;
-            bottom: -50px;
-            right: -30px;
-            font-family: serif;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .hero-content p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn-primary, .btn-secondary {
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s;
-            display: inline-block;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: #8B4513;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(255,215,0,0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid #FFD700;
-        }
-
-        .btn-secondary:hover {
-            background: #FFD700;
-            color: #8B4513;
-        }
-
-        /* Sections */
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #8B4513;
-            margin-bottom: 2rem;
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 3rem;
-        }
-
-        /* Cards Grid */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
+            padding: 60px 0;
         }
-
         .card {
             background: white;
             padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            cursor: pointer;
             text-align: center;
-            border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s;
         }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 20px 35px rgba(139,69,19,0.15); }
+        .card i { font-size: 3rem; color: #FFA500; margin-bottom: 1rem; }
+        .card h3 { color: #8B4513; margin-bottom: 0.8rem; }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .card i {
-            font-size: 3rem;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        .card h3 {
-            color: #8B4513;
-            margin-bottom: 1rem;
-        }
-
-        /* Service Categories */
-        .service-category {
-            margin-bottom: 50px;
-        }
-
-        .service-category h2 {
-            color: #8B4513;
-            margin-bottom: 20px;
-            border-left: 4px solid #FFD700;
-            padding-left: 15px;
-        }
-
-        .service-items {
+        /* ========== ENHANCED HOROSCOPE STYLES (ONLY HOROSCOPE PAGE ENHANCED) ========== */
+        .rashi-zodiac-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
         }
-
-        .service-item {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            transition: all 0.3s;
-            border: 1px solid #f0e5d8;
+        .rashi-card {
+            background: linear-gradient(145deg, #ffffff, #fff9f0);
+            border-radius: 35px;
+            padding: 20px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,215,0,0.3);
+            position: relative;
+            overflow: hidden;
         }
-
-        .service-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .service-item h3 {
-            color: #8B4513;
-            margin-bottom: 10px;
-        }
-
-        .duration {
-            display: inline-block;
-            background: #FFD700;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-top: 10px;
-            color: #8B4513;
-        }
-
-        /* Booking Form */
-        .booking-container {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 50px;
-            background: white;
-            padding: 40px;
-            border-radius: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-
-        .booking-info {
-            background: linear-gradient(135deg, #8B4513, #5a2d0c);
-            padding: 30px;
-            border-radius: 20px;
-            color: white;
-        }
-
-        .booking-info ul {
-            list-style: none;
-            margin-top: 20px;
-        }
-
-        .booking-info li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #8B4513;
-        }
-
-        .form-group input, .form-group select, .form-group textarea {
+        .rashi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
             width: 100%;
-            padding: 12px;
-            border: 2px solid #f0e5d8;
-            border-radius: 12px;
-            font-family: inherit;
-            transition: all 0.3s;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.2), transparent);
+            transition: left 0.6s;
         }
-
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            outline: none;
+        .rashi-card:hover::before { left: 100%; }
+        .rashi-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 40px rgba(139,69,19,0.25);
             border-color: #FFD700;
         }
-
-        /* Dashboard */
-        .dashboard-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .stat-card {
-            background: linear-gradient(135deg, #8B4513, #5a2d0c);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            text-align: center;
-        }
-
-        .stat-card i {
-            font-size: 2rem;
+        .rashi-symbol {
+            font-size: 4rem;
             margin-bottom: 10px;
-        }
-
-        .stat-card h3 {
-            font-size: 2rem;
-        }
-
-        .bookings-table-container {
-            background: white;
-            border-radius: 20px;
-            padding: 20px;
-            overflow-x: auto;
-        }
-
-        .booking-item {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-left: 5px solid #FFD700;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .booking-item h3 {
-            color: #8B4513;
-            margin-bottom: 10px;
-        }
-
-        .booking-details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
-            margin: 15px 0;
-        }
-
-        .whatsapp-link {
             display: inline-block;
-            background: #25D366;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 10px;
-            text-decoration: none;
-            margin-right: 10px;
+            filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.2));
+            transition: transform 0.3s;
         }
-
-        .delete-btn {
-            background: #f44336;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 10px;
-            cursor: pointer;
+        .rashi-card:hover .rashi-symbol { transform: scale(1.1) rotate(5deg); }
+        .rashi-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Cormorant Garamond', serif;
+            color: #8B4513;
+            margin: 8px 0;
+            letter-spacing: 1px;
         }
-
-        .empty-state {
-            text-align: center;
-            padding: 60px;
-            color: #999;
+        .rashi-lord {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #5a2d0c;
+            margin: 8px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-
-        /* Contact Section */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+        .rashi-detail {
+            font-size: 0.8rem;
+            color: #6b4c3b;
+            margin-top: 8px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
         }
-
-        .contact-info {
-            background: linear-gradient(135deg, #8B4513, #5a2d0c);
-            padding: 40px;
-            border-radius: 30px;
-            color: white;
+        .rashi-detail span { background: #fef3e2; padding: 4px 12px; border-radius: 30px; }
+        .horoscope-result-card {
+            background: linear-gradient(135deg, #fff8ed, #fff3e6);
+            border-radius: 48px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-left: 8px solid #FFD700;
+            animation: fadeSlideUp 0.5s ease-out;
+            transition: all 0.3s;
         }
-
-        .contact-info p {
-            margin-bottom: 20px;
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .rashi-result-header {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
+            flex-wrap: wrap;
+            border-bottom: 2px dashed #FFD700;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
         }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            margin-right: 15px;
-            transition: color 0.3s;
+        .rashi-result-symbol { font-size: 4rem; }
+        .rashi-result-title h2 { font-size: 2.5rem; color: #8B4513; margin: 0; }
+        .rashi-result-title p { font-size: 1rem; color: #b87333; }
+        .remedy-box {
+            background: #fff0e0;
+            padding: 18px;
+            border-radius: 28px;
+            margin-top: 20px;
+            display: inline-block;
+            width: 100%;
         }
-
-        .social-links a:hover {
+        .mantra-chant {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            background: #8B4513;
             color: #FFD700;
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #2c2418, #1f1a12);
-            color: white;
-            padding: 60px 0 20px;
-            margin-top: 60px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-section a {
-            display: block;
-            color: #ccc;
-            text-decoration: none;
-            margin-bottom: 10px;
-        }
-
-        .footer-section a:hover {
-            color: #FFD700;
-        }
-
-        .footer-bottom {
+            padding: 12px;
+            border-radius: 50px;
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 15px;
         }
-
-        /* Alert */
-        .alert {
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            padding: 15px 25px;
-            border-radius: 12px;
-            color: white;
-            z-index: 2000;
-            animation: slideIn 0.3s ease;
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(255,215,0,0.4); }
+            70% { box-shadow: 0 0 0 12px rgba(255,215,0,0); }
+            100% { box-shadow: 0 0 0 0 rgba(255,215,0,0); }
         }
-
-        .alert-success {
-            background: #4caf50;
+        .active-rashi {
+            border: 3px solid #FFD700;
+            background: linear-gradient(145deg, #fff8e0, #fff2dc);
+            animation: pulseGlow 1.5s infinite;
         }
-
-        .alert-error {
-            background: #f44336;
-        }
-
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        /* Hidden class */
-        .hidden {
+        
+        .modal {
             display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
         }
+        .modal-content {
+            background: white;
+            max-width: 550px;
+            width: 90%;
+            padding: 30px;
+            border-radius: 30px;
+            position: relative;
+            animation: fadeInUp 0.3s;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #8B4513; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px);} to { opacity: 1; transform: translateY(0);} }
 
-        /* Responsive */
+        .shloka-box { background: #fff8e7; border-left: 6px solid #FFD700; padding: 20px; margin: 25px 0; border-radius: 16px; font-style: italic; }
+        .sanskrit-text { font-size: 1.2rem; font-family: 'Cormorant Garamond', serif; font-weight: 600; color: #b85c1a; }
+        .gita-section, .donation-section { background: linear-gradient(135deg, #8B4513, #5a2d0c); color: white; padding: 50px; border-radius: 30px; margin: 50px 0; }
+        .hidden { display: none; }
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .mobile-menu {
-                display: block;
-            }
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-            .booking-container, .contact-container {
-                grid-template-columns: 1fr;
-            }
-            .nav-links.active {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                right: 0;
-                background: #8B4513;
-                padding: 20px;
-                gap: 15px;
-            }
+            .nav-links { display: none; }
+            .mobile-menu { display: block; }
+            .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: #8B4513; padding: 20px; z-index: 999; }
+            .hero h1 { font-size: 1.8rem; }
+            .rashi-name { font-size: 1.4rem; }
         }
+        footer { background: #2c2418; color: white; padding: 40px 0 20px; margin-top: 60px; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 30px; }
+        .footer-section a { display: block; color: #ddd; text-decoration: none; margin: 8px 0; cursor: pointer; transition: 0.3s; }
+        .footer-section a:hover { color: #FFD700; transform: translateX(5px); }
+        .whatsapp-link { background: #25D366; color: white; padding: 6px 12px; border-radius: 20px; text-decoration: none; display: inline-block; margin-top: 8px; }
+        .booking-item { background: white; border-radius: 16px; padding: 18px; margin-bottom: 15px; border-left: 5px solid #FFD700; }
+        .gau-product { border: 2px solid #FFD700; background: #fffaf0; }
+        .rashi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin: 20px 0; } /* kept for compatibility but not used */
     </style>
 </head>
 <body>
     <nav>
         <div class="container">
             <div class="nav-content">
-                <div class="logo">
-                    <i class="fas fa-om"></i>
-                    <h2>Purohith Services</h2>
+                <div class="logo"><span>🕉️</span><h2>Purohith Services</h2><span>卐</span><span>🐄</span></div>
+                <div id="panchangaWidget" class="panchanga-widget">
+                    <i class="fas fa-moon"></i>
+                    <span class="tithi-text" id="dynamicTithi">Loading...</span>
+                    <span class="date-text" id="dynamicDate"></span>
+                    <span class="end-time" id="tithiEndTime"></span>
                 </div>
                 <ul class="nav-links">
-                    <li><a onclick="showPage('home')">Home</a></li>
-                    <li><a onclick="showPage('services')">Services</a></li>
-                    <li><a onclick="showPage('rituals')">Rituals</a></li>
-                    <li><a onclick="showPage('booking')">Book Now</a></li>
-                    <li><a onclick="showPage('dashboard')">Dashboard</a></li>
-                    <li><a onclick="showPage('contact')">Contact</a></li>
+                    <li><a onclick="showPage('home')">🏠 Home</a></li><li><a onclick="showPage('services')">✨ Services</a></li>
+                    <li><a onclick="showPage('rituals')">📿 Rituals</a></li><li><a onclick="showPage('music')">🎵 Music</a></li>
+                    <li><a onclick="showPage('gita')">📖 Bhagavad Gita</a></li>
+                    <li><a onclick="showPage('horoscope')">⭐ Horoscope</a></li>
+                    <li><a onclick="showPage('gauseva')">🐄 GauSeva</a></li>
+                    <li><a onclick="showPage('gauproducts')">🪔 Cow Dung & Goumutra</a></li>
+                    <li><a onclick="showPage('donation')">❤️ Donate</a></li>
+                    <li><a onclick="showPage('booking')">📅 Book</a></li>
+                    <li><a onclick="showPage('dashboard')">📊 Dashboard</a></li>
+                    <li><a onclick="showPage('contact')">📞 Contact</a></li>
                 </ul>
-                <div class="mobile-menu" onclick="toggleMobileMenu()">☰</div>
+                <div class="mobile-menu" onclick="toggleMenu()">☰</div>
             </div>
         </div>
     </nav>
 
-    <!-- Home Page -->
-    <div id="homePage" class="page">
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>शुभम करोति कल्याणम्</h1>
-                    <p>Traditional Hindu Rituals & Ceremonies by Experienced Purohith</p>
-                    <div class="hero-buttons">
-                        <button onclick="showPage('booking')" class="btn-primary">Book a Ritual</button>
-                        <button onclick="showPage('services')" class="btn-secondary">View Services</button>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <div id="ritualModal" class="modal"><div class="modal-content"><span class="close-modal" onclick="closeModal()">&times;</span><div id="modalBody"></div></div></div>
 
-        <section class="section">
-            <div class="container">
+    <!-- HOME PAGE (ORIGINAL CONTENT) -->
+    <div id="homePage">
+        <section class="hero"><div class="container"><h1>🕉️ ॐ श्री शुभम करोति कल्याणम् 卐 🐄</h1><p>Traditional Hindu Rituals | Carnatic Music | Free Gita Classes | GauSeva | Pure Cow Dung Products</p><button onclick="showPage('booking')" class="btn-primary">📿 Book a Ritual</button> <button onclick="showPage('gauproducts')" class="btn-secondary">🪔 Order Cow Dung Cakes</button></div></section>
+        <div class="container">
+            <div class="cards-grid">
+                <div class="card" onclick="showPage('music')"><i class="fas fa-music"></i><h3>🎵 Carnatic Vocal</h3><p>Professional training ₹1500/month</p></div>
+                <div class="card" onclick="showPage('gita')"><i class="fas fa-book"></i><h3>📖 Free Gita Classes</h3><p>Weekly discourses by experts</p></div>
+                <div class="card" onclick="showPage('gauproducts')"><i class="fas fa-cow"></i><h3>🪔 Cow Dung Cakes</h3><p>Sacred Havan & Diwali | Goumutra available</p></div>
+            </div>
+            <div class="shloka-box"><div class="sanskrit-text">"ॐ तत्सदिति श्रीमद्भगवद्गीतासु उपनिषत्सु ब्रह्मविद्यायां योगशास्त्रे श्रीकृष्णार्जुनसंवादे..."</div><p>🌿 Bhagavad Gita: The eternal dialogue on dharma, devotion and liberation.</p></div>
+            <div class="shloka-box"><div class="sanskrit-text">"श्री विष्णोः सहस्रनाम त्रिसन्ध्यं यः पठेन्नरः। सर्वपापविनिर्मुक्तो विष्णुलोकं स गच्छति॥"</div><p>✨ One who recites Vishnu Sahasranama thrice daily is freed from sins and attains Vishnu's abode.</p></div>
+        </div>
+    </div>
+
+    <!-- SERVICES PAGE (ORIGINAL) -->
+    <div id="servicesPage" class="hidden"><section class="hero" style="padding:50px"><h1>✨ Our Vedic Services 卐</h1><p>Authentic rituals, music education, astrology & GauSeva</p></section><div class="container"><div class="cards-grid" id="servicesGrid"></div></div></div>
+
+    <!-- RITUALS PAGE (ORIGINAL) -->
+    <div id="ritualsPage" class="hidden"><section class="hero" style="padding:50px"><h1>📿 16 Samskaras & Rituals</h1><p>Click any ritual to read detailed significance, Vishnu shlokas & Vedic importance</p></section><div class="container"><div class="cards-grid" id="ritualsGrid"></div></div></div>
+
+    <!-- MUSIC PAGE (ORIGINAL) -->
+    <div id="musicPage" class="hidden"><section class="hero"><h1>🎵 श्री Carnatic Vocal & Keyboard Classes 卐</h1><p>Learn from experienced gurus | Online & Offline</p></section><div class="container"><div class="gita-section"><h2>🎶 Music Programs</h2><div class="cards-grid"><div class="card"><i class="fas fa-microphone-alt"></i><h3>Carnatic Vocal</h3><p>₹1500/month | Beginners to Advanced</p><button onclick="showPage('booking')" class="btn-primary">Enroll Now</button></div><div class="card"><i class="fas fa-keyboard"></i><h3>Keyboard Classes</h3><p>₹1200/month | Bhajans & Kritis</p><button onclick="showPage('booking')" class="btn-primary">Enroll Now</button></div></div><div class="shloka-box"><div class="sanskrit-text">"नादात्मकं जगदिदं संगीतमयमेव च। तस्माद्गानं परं ब्रह्म स्वरूपं वैष्णवं प्रियम्॥"</div><p>🎼 This universe is made of sound and music; music is the form of Supreme Brahman and dear to Lord Vishnu.</p></div></div></div></div>
+
+    <!-- GITA PAGE (ORIGINAL) -->
+    <div id="gitaPage" class="hidden"><section class="hero"><h1>📖 श्रीमद् भगवद् गीता 卐</h1><p>Free Weekly Classes - Open to All</p></section><div class="container"><div class="gita-section"><h2>📅 Schedule: Sunday 9:00 AM & Wednesday 7:00 PM (Online Zoom)</h2><div class="shloka-box"><div class="sanskrit-text">"योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय। सिद्ध्यसिद्ध्योः समो भूत्वा समत्वं योग उच्यते॥" (Gita 2.48)</div><p>🧘 Established in Yoga, perform actions abandoning attachment, remaining balanced in success and failure.</p></div><div class="shloka-box"><div class="sanskrit-text">"मयि सर्वमिदं प्रोक्तं सूत्रे मणिगणा इव। तत्क्षरं परमं ब्रह्म तद्विष्णोः परमं पदम्॥" (Gita 7.7)</div><p>🔱 Everything rests in Me like gems on a thread. That Supreme Brahman is the Supreme Abode of Vishnu.</p></div><div class="shloka-box"><div class="sanskrit-text">"सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज। अहं त्वां सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः॥" (Gita 18.66)</div><p>🕉️ Abandon all varieties of dharma and surrender unto Me alone. I shall liberate you from all sins.</p></div><button onclick="window.open('https://wa.me/918328059590?text=Join%20Free%20Gita%20Classes')" class="btn-primary">📖 Join Free Classes on WhatsApp</button></div></div></div>
+
+    <!-- ==================== ENHANCED HOROSCOPE PAGE (ONLY THIS PAGE IS ENHANCED) ==================== -->
+    <div id="horoscopePage" class="hidden">
+        <section class="hero"><h1>⭐ Rashi Phala & Vedic Astrology 卐</h1><p>Select your Rashi for today's prediction, remedies & Vishnu mantras</p></section>
+        <div class="container">
+            <div id="rashiDynamicGrid" class="rashi-zodiac-grid"></div>
+            <div id="horoscopeResult" class="horoscope-result-card">
+                <div style="text-align:center; opacity:0.8;"><i class="fas fa-star-of-life" style="font-size:3rem; color:#FFD700;"></i><p>🌙 Click on your Rashi to receive personalized guidance, planetary remedies and powerful Vishnu shlokas.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GAUSEVA PAGE (ORIGINAL) -->
+    <div id="gausevaPage" class="hidden"><section class="hero"><h1>🐄 गवां सेवा परम धर्मः 卐</h1><p>GauSeva - Service to Cows, the highest virtue</p></section><div class="container"><div class="donation-section"><h2>🙏 Importance of Cows (Gau Mata) & Brahmin Service</h2><p>Cows are the abode of all deities. Lord Krishna as Govardhanadhari and Gopala emphasizes GauSeva. Serving cows and Brahmins brings divine blessings, removes sins and ensures prosperity.</p><div class="shloka-box" style="background:rgba(255,215,0,0.2)"><div class="sanskrit-text">"गावो विश्वस्य मातरः" — ऋग्वेद</div><p>🐮 Cows are the mothers of the universe. They give selflessly and protect dharma.</p></div><div class="shloka-box" style="background:rgba(255,215,0,0.2)"><div class="sanskrit-text">"यस्य गावे च विप्राय च दद्यात्सर्वमेव तत्। स्वर्गलोकमवाप्नोति विष्णुलोकं स गच्छति॥"</div><p>🌸 One who donates cows and serves Brahmins attains heaven and finally reaches Vishnu's abode.</p></div><div class="cards-grid"><div class="card" onclick="donateAmount(51,'Gau Aahar')"><i class="fas fa-apple-alt"></i><h3>Gau Aahar (Feed)</h3><p>₹51</p><button class="btn-primary">Donate Now</button></div><div class="card" onclick="donateAmount(1100,'Gau Shelter')"><i class="fas fa-home"></i><h3>Gau Shelter (Monthly)</h3><p>₹1,100</p><button class="btn-primary">Donate</button></div><div class="card" onclick="donateAmount(5100,'Annual Gau Seva')"><i class="fas fa-hand-holding-heart"></i><h3>Annual Gau Seva</h3><p>₹5,100</p><button class="btn-primary">Donate</button></div></div></div></div></div>
+
+    <!-- GAU PRODUCTS PAGE (ORIGINAL) -->
+    <div id="gauproductsPage" class="hidden">
+        <section class="hero"><h1>🪔 Pure Cow Dung Cakes & Goumutra 卐</h1><p>Sacred for Havan, Agnihotra, Yajnas & Spiritual Cleansing</p></section>
+        <div class="container">
+            <div class="gita-section" style="background: linear-gradient(135deg, #3e2a1f, #2c1d12);">
+                <h2><i class="fas fa-cow"></i> ॐ गोमूत्र गोमय दिव्य औषधम् 卐</h2>
+                <p>As per Vedas, Cow dung (Gomaya) and Cow urine (Gomutra) are highly purifying. They are used in Panchagavya, Havan, and Vedic rituals to remove negative energies and bring divine grace.</p>
+                <div class="shloka-box" style="background:rgba(255,215,0,0.2);"><div class="sanskrit-text">"गोमयेन कृतं हव्यं गोमूत्रेण च तर्पणम्। सर्वपापहरं पुण्यं विष्णुलोकप्रदायकम्॥"</div><p>🔥 Offerings made with cow dung and cow urine destroy all sins and grant Vishnu's abode.</p></div>
                 <div class="cards-grid">
-                    <div class="card">
-                        <i class="fas fa-clock"></i>
-                        <h3>Muhurat Timing</h3>
-                        <p>Auspecious timings for rituals</p>
-                        <button onclick="showPage('contact')" class="btn-primary" style="margin-top: 15px; padding: 8px 20px;">Check Now →</button>
-                    </div>
-                    <div class="card">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h3>Service Areas</h3>
-                        <p>Available for home visits</p>
-                        <button onclick="showPage('contact')" class="btn-primary" style="margin-top: 15px; padding: 8px 20px;">View Areas →</button>
-                    </div>
-                    <div class="card">
-                        <i class="fas fa-phone-alt"></i>
-                        <h3>24/7 Support</h3>
-                        <p>Call for emergency rituals</p>
-                        <a href="tel:+918328059590" class="btn-primary" style="margin-top: 15px; padding: 8px 20px; display: inline-block;">Call Now →</a>
-                    </div>
+                    <div class="card gau-product"><i class="fas fa-fire"></i><h3>🌿 Cow Dung Cakes (Uple)</h3><p>100% pure desi cow dung, sun-dried. Ideal for Havan, Yajna, Diwali, daily Agnihotra.</p><p class="sanskrit-text">Pack of 20 cakes</p><p><strong>₹ 299 / pack</strong></p><button class="btn-primary" onclick="orderGauProduct('Cow Dung Cakes (Pack of 20)')">🛒 Order Now</button></div>
+                    <div class="card gau-product"><i class="fas fa-flask"></i><h3>💧 Pure Goumutra (Cow Urine)</h3><p>Distilled & filtered, as per Ayurveda. Used for spiritual purification, Panchagavya, and Vedic rites.</p><p>500 ml bottle</p><p><strong>₹ 199 / bottle</strong></p><button class="btn-primary" onclick="orderGauProduct('Pure Goumutra 500ml')">🛒 Order Now</button></div>
+                    <div class="card gau-product"><i class="fas fa-dharmachakra"></i><h3>🪔 Combo: Cakes + Goumutra</h3><p>20 Cow Dung Cakes + 500ml Goumutra. Best for Havan & temple use.</p><p><strong>₹ 449 / combo</strong></p><button class="btn-primary" onclick="orderGauProduct('Combo (20 Cakes + Goumutra)')">🛒 Order Combo</button></div>
                 </div>
+                <div style="text-align:center; margin-top: 30px;"><p><i class="fas fa-truck"></i> Free shipping on orders above ₹500 | Delivery across India</p><button onclick="showPage('booking')" class="btn-secondary">📞 Bulk Order / Custom Inquiry</button></div>
             </div>
-        </section>
-
-        <section class="section" style="background: white;">
-            <div class="container">
-                <div class="cards-grid">
-                    <div class="card">
-                        <i class="fas fa-praying-hands"></i>
-                        <h3>20+ Years Experience</h3>
-                        <p>Traditional Vedic priest trained in Gurukula system</p>
-                    </div>
-                    <div class="card">
-                        <i class="fas fa-check-circle"></i>
-                        <h3>500+ Rituals</h3>
-                        <p>Successfully performed ceremonies</p>
-                    </div>
-                    <div class="card">
-                        <i class="fas fa-home"></i>
-                        <h3>Home Visits</h3>
-                        <p>Available across the city</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
     </div>
 
-    <!-- Services Page -->
-    <div id="servicesPage" class="page hidden">
-        <section class="hero" style="padding: 80px 0;">
-            <div class="container">
-                <h1>Our Services</h1>
-                <p>Comprehensive Vedic rituals for all occasions</p>
-            </div>
-        </section>
+    <!-- DONATION PAGE (ORIGINAL) -->
+    <div id="donationPage" class="hidden"><section class="hero"><h1>❤️ Donations for Vedic Causes 卐</h1><p>Support Annadanam, Temple renovation, Music education</p></section><div class="container"><div class="donation-section"><h2>🙏 Your generosity sustains dharma</h2><div class="cards-grid"><div class="card" onclick="donateAmount(101,'General Donation')"><i class="fas fa-seedling"></i><h3>General Donation</h3><p>₹101</p></div><div class="card" onclick="donateAmount(501,'Annadanam')"><i class="fas fa-utensils"></i><h3>Annadanam</h3><p>₹501</p></div><div class="card" onclick="donateAmount(1001,'Music Education')"><i class="fas fa-music"></i><h3>Sponsor Music Class</h3><p>₹1,001</p></div><div class="card" onclick="donateAmount(5001,'Temple Renovation')"><i class="fas fa-temple"></i><h3>Temple Renovation</h3><p>₹5,001</p></div></div><div class="upi-container" style="background:white; padding:25px; border-radius:25px; margin-top:20px; text-align:center"><h3>🔹 UPI ID: <strong style="color:#8B4513">aryanvaruna@oksbi</strong></h3><button class="btn-primary" onclick="copyUPI()"><i class="fas fa-copy"></i> Copy UPI ID</button><p style="margin-top:15px">After payment, send screenshot on WhatsApp for confirmation & blessings.</p></div></div></div></div>
 
-        <section class="section">
-            <div class="container">
-                <div class="service-category">
-                    <h2><i class="fas fa-baby"></i> Samskaras (Life Events)</h2>
-                    <div class="service-items">
-                        <div class="service-item"><h3>Namakaranam</h3><p>Naming ceremony for newborns</p><span class="duration">2-3 hours</span></div>
-                        <div class="service-item"><h3>Annaprasanam</h3><p>First rice feeding ceremony</p><span class="duration">2 hours</span></div>
-                        <div class="service-item"><h3>Upanayanam</h3><p>Sacred thread ceremony</p><span class="duration">4-5 hours</span></div>
-                    </div>
-                </div>
-                <div class="service-category">
-                    <h2><i class="fas fa-heart"></i> Vivaha (Marriage)</h2>
-                    <div class="service-items">
-                        <div class="service-item"><h3>Traditional Hindu Wedding</h3><p>Complete Vedic marriage ceremony</p><span class="duration">4-6 hours</span></div>
-                        <div class="service-item"><h3>Nischitartham</h3><p>Engagement ceremony</p><span class="duration">2-3 hours</span></div>
-                    </div>
-                </div>
-                <div class="service-category">
-                    <h2><i class="fas fa-home"></i> Gruha Pravesham</h2>
-                    <div class="service-items">
-                        <div class="service-item"><h3>House Warming</h3><p>New house blessing with Vastu Shanti</p><span class="duration">3-4 hours</span></div>
-                    </div>
-                </div>
-                <div class="service-category">
-                    <h2><i class="fas fa-pray"></i> Regular Poojas</h2>
-                    <div class="service-items">
-                        <div class="service-item"><h3>Satyanarayana Vratam</h3><p>Full moon pooja for prosperity</p></div>
-                        <div class="service-item"><h3>Ganapati Homam</h3><p>Removing obstacles</p></div>
-                        <div class="service-item"><h3>Navagraha Pooja</h3><p>Planetary peace rituals</p></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+    <!-- BOOKING PAGE (ORIGINAL) -->
+    <div id="bookingPage" class="hidden"><section class="hero"><h1>📅 Book a Ritual or Class 卐</h1><p>Fill the form to schedule your ceremony, music class or order products</p></section><div class="container"><div class="cards-grid" style="grid-template-columns:1fr 1fr"><div class="card"><h3>📞 Need help?</h3><p><i class="fas fa-phone"></i> +91 83280 59590<br><i class="fab fa-whatsapp"></i> +91 83280 59590<br><i class="fas fa-envelope"></i> aryanvaruna@gmail.com</p><p>Advance booking: 7-10 days recommended.</p></div><form id="bookingForm" style="background:white; padding:30px; border-radius:30px"><h3>📿 Booking Request</h3><input type="text" id="name" placeholder="Full Name *" required style="width:100%; padding:12px; margin:8px 0; border-radius:40px; border:1px solid #ccc"><input type="tel" id="phone" placeholder="Phone Number *" required style="width:100%; padding:12px; margin:8px 0; border-radius:40px"><select id="ritual" required style="width:100%; padding:12px; margin:8px 0; border-radius:40px"><option value="">Select Service</option><option>Punyahavachanam</option><option>Vivida Shanti</option><option>Carnatic Vocal Classes</option><option>Keyboard Classes</option><option>Bhagavad Gita Classes (Free)</option><option>Namakaranam</option><option>Annaprasanam</option><option>Upanayanam</option><option>Traditional Wedding</option><option>Gruha Pravesham</option><option>Horoscope Consultation</option><option>Gau Pooja</option><option>Order Cow Dung Cakes</option><option>Order Goumutra</option></select><input type="date" id="date" required style="width:100%; padding:12px; margin:8px 0; border-radius:40px"><textarea id="address" rows="2" placeholder="Address / Venue / Delivery Address" style="width:100%; padding:12px; border-radius:20px"></textarea><button type="submit" class="btn-primary">📩 Submit Request →</button></form></div></div></div>
 
-    <!-- Rituals Page -->
-    <div id="ritualsPage" class="page hidden">
-        <section class="hero" style="padding: 80px 0;">
-            <div class="container">
-                <h1>Rituals & Ceremonies</h1>
-                <p>Detailed information about various Hindu rituals</p>
-            </div>
-        </section>
+    <!-- DASHBOARD PAGE (ORIGINAL) -->
+    <div id="dashboardPage" class="hidden"><section class="hero"><h1>📊 Booking Dashboard 卐</h1><p>Manage all client bookings & orders</p></section><div class="container"><div class="cards-grid" style="grid-template-columns:repeat(3,1fr)"><div class="card"><h3>📋 Total Bookings</h3><h2 id="totalBookings">0</h2></div><div class="card"><h3>⏳ Pending</h3><h2 id="pendingBookings">0</h2></div><div class="card"><h3>👥 Unique Clients</h3><h2 id="uniqueClients">0</h2></div></div><div id="bookingsList"></div><button class="btn-primary" onclick="loadDashboard()"><i class="fas fa-sync-alt"></i> Refresh</button></div></div>
 
-        <section class="section">
-            <div class="container">
-                <div class="cards-grid">
-                    <div class="card"><i class="fas fa-baby-carriage"></i><h3>Namakaranam</h3><p>Naming ceremony on 11th, 12th, or 21st day after birth</p><button onclick="showPage('booking')" class="btn-primary" style="margin-top: 15px;">Book Now</button></div>
-                    <div class="card"><i class="fas fa-utensils"></i><h3>Annaprasanam</h3><p>First rice feeding at 6-8 months</p><button onclick="showPage('booking')" class="btn-primary" style="margin-top: 15px;">Book Now</button></div>
-                    <div class="card"><i class="fas fa-thread"></i><h3>Upanayanam</h3><p>Sacred thread ceremony for boys</p><button onclick="showPage('booking')" class="btn-primary" style="margin-top: 15px;">Book Now</button></div>
-                    <div class="card"><i class="fas fa-ring"></i><h3>Vivaha</h3><p>Traditional Vedic wedding with 7 pheras</p><button onclick="showPage('booking')" class="btn-primary" style="margin-top: 15px;">Book Now</button></div>
-                    <div class="card"><i class="fas fa-home"></i><h3>Gruha Pravesham</h3><p>House warming ceremony</p><button onclick="showPage('booking')" class="btn-primary" style="margin-top: 15px;">Book Now</button></div>
-                    <div class="card"><i class="fas fa-moon"></i><h3>Satyanarayana Vratam</h3><p>Full moon day ritual for prosperity</p><button onclick="showPage('booking')" class="btn-primary" style="margin-top: 15px;">Book Now</button></div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Booking Page -->
-    <div id="bookingPage" class="page hidden">
-        <section class="hero" style="padding: 80px 0;">
-            <div class="container">
-                <h1>Book a Ritual</h1>
-                <p>Fill the form to schedule your ceremony</p>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container">
-                <div class="booking-container">
-                    <div class="booking-info">
-                        <h3>Booking Information</h3>
-                        <ul>
-                            <li><i class="fas fa-calendar-check"></i> Advance booking: 7-10 days</li>
-                            <li><i class="fas fa-clock"></i> Muhurat consultation included</li>
-                            <li><i class="fas fa-hand-holding-heart"></i> Dakshina as per your wish</li>
-                            <li><i class="fas fa-tools"></i> Samagri arrangement available</li>
-                            <li><i class="fas fa-phone"></i> Contact: +91 83280 59590 / +91 94401 75900</li>
-                            <li><i class="fas fa-envelope"></i> aryanvaruna@gmail.com</li>
-                        </ul>
-                    </div>
-                    <form id="bookingForm">
-                        <div class="form-group"><label>Full Name *</label><input type="text" id="name" required></div>
-                        <div class="form-group"><label>Phone Number *</label><input type="tel" id="phone" required></div>
-                        <div class="form-group"><label>Email</label><input type="email" id="email"></div>
-                        <div class="form-group"><label>Select Ritual *</label><select id="ritual" required><option value="">Choose</option><option>Namakaranam</option><option>Annaprasanam</option><option>Upanayanam</option><option>Traditional Wedding</option><option>Gruha Pravesham</option><option>Satyanarayana Vratam</option></select></div>
-                        <div class="form-group"><label>Preferred Date *</label><input type="date" id="date" required></div>
-                        <div class="form-group"><label>Preferred Time</label><input type="time" id="time"></div>
-                        <div class="form-group"><label>Venue Address *</label><textarea id="address" rows="3" required></textarea></div>
-                        <div class="form-group"><label>Additional Details</label><textarea id="details" rows="2"></textarea></div>
-                        <button type="submit" class="btn-primary">Submit Booking Request</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Dashboard Page -->
-    <div id="dashboardPage" class="page hidden">
-        <section class="hero" style="padding: 80px 0;">
-            <div class="container">
-                <h1><i class="fas fa-chart-line"></i> Booking Dashboard</h1>
-                <p>Manage and view all your ritual bookings</p>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container">
-                <div class="dashboard-stats">
-                    <div class="stat-card"><i class="fas fa-calendar-check"></i><h3 id="totalBookings">0</h3><p>Total Bookings</p></div>
-                    <div class="stat-card"><i class="fas fa-clock"></i><h3 id="pendingBookings">0</h3><p>Pending</p></div>
-                    <div class="stat-card"><i class="fas fa-check-circle"></i><h3 id="confirmedBookings">0</h3><p>Confirmed</p></div>
-                    <div class="stat-card"><i class="fas fa-users"></i><h3 id="uniqueClients">0</h3><p>Unique Clients</p></div>
-                </div>
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <button class="btn-primary" onclick="loadDashboard()"><i class="fas fa-sync-alt"></i> Refresh</button>
-                    <button class="btn-secondary" onclick="exportBookings()"><i class="fas fa-download"></i> Export to Excel</button>
-                </div>
-                <div id="bookingsList"></div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Contact Page -->
-    <div id="contactPage" class="page hidden">
-        <section class="hero" style="padding: 80px 0;">
-            <div class="container">
-                <h1>Contact Us</h1>
-                <p>Get in touch for rituals and ceremonies</p>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container">
-                <div class="contact-container">
-                    <div class="contact-info">
-                        <h3>Contact Details</h3>
-                        <p><i class="fas fa-phone"></i> <strong>Phone:</strong><br><a href="tel:+918328059590" style="color: white;">+91 83280 59590</a><br><a href="tel:+919440175900" style="color: white;">+91 94401 75900</a></p>
-                        <p><i class="fab fa-whatsapp"></i> <strong>WhatsApp:</strong><br><a href="https://wa.me/918328059590" style="color: white;">+91 83280 59590</a></p>
-                        <p><i class="fas fa-envelope"></i> <strong>Email:</strong><br><a href="mailto:aryanvaruna@gmail.com" style="color: white;">aryanvaruna@gmail.com</a></p>
-                        <p><i class="fas fa-clock"></i> <strong>Business Hours:</strong><br>Monday - Sunday: 6:00 AM - 8:00 PM</p>
-                        <div class="social-links"><h4>Follow Us</h4><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a href="https://wa.me/918328059590"><i class="fab fa-whatsapp"></i></a></div>
-                    </div>
-                    <form id="contactForm">
-                        <h3>Send a Message</h3>
-                        <div class="form-group"><label>Your Name *</label><input type="text" id="contactName" required></div>
-                        <div class="form-group"><label>Phone Number *</label><input type="tel" id="contactPhone" required></div>
-                        <div class="form-group"><label>Email</label><input type="email" id="contactEmail"></div>
-                        <div class="form-group"><label>Subject *</label><select id="contactSubject" required><option value="">Select</option><option>Ritual Booking</option><option>Muhurat Consultation</option><option>General Inquiry</option></select></div>
-                        <div class="form-group"><label>Message *</label><textarea id="contactMessage" rows="4" required></textarea></div>
-                        <button type="submit" class="btn-primary">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </div>
+    <!-- CONTACT PAGE (ORIGINAL) -->
+    <div id="contactPage" class="hidden"><section class="hero"><h1>📞 Contact Us 卐</h1><p>Get in touch for rituals, classes, horoscope, GauSeva & cow products</p></section><div class="container"><div class="cards-grid"><div class="card"><i class="fas fa-phone-alt"></i><h3>Call / WhatsApp</h3><p>+91 83280 59590<br>+91 94401 75900</p><p><i class="fas fa-envelope"></i> aryanvaruna@gmail.com</p><div class="social-links"><a href="https://wa.me/918328059590" class="whatsapp-link" target="_blank"><i class="fab fa-whatsapp"></i> Chat Now</a></div></div><form id="contactForm" style="background:white; padding:30px; border-radius:30px"><h3>✉️ Send a Message</h3><input type="text" id="contactName" placeholder="Your Name" required style="width:100%; padding:12px; margin:10px 0; border-radius:40px"><input type="tel" id="contactPhone" placeholder="Phone" required style="width:100%; padding:12px; margin:10px 0; border-radius:40px"><textarea id="contactMsg" rows="4" placeholder="Your message..." required style="width:100%; padding:12px; border-radius:20px"></textarea><button type="submit" class="btn-primary">📧 Send via WhatsApp</button></form></div></div></div>
 
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section"><h3>Purohith Services</h3><p>Preserving traditions through authentic Vedic rituals</p></div>
-                <div class="footer-section"><h4>Quick Links</h4><a onclick="showPage('home')">Home</a><a onclick="showPage('services')">Services</a><a onclick="showPage('booking')">Booking</a><a onclick="showPage('dashboard')">Dashboard</a><a onclick="showPage('contact')">Contact</a></div>
-                <div class="footer-section"><h4>Contact</h4><p><i class="fas fa-phone"></i> +91 83280 59590</p><p><i class="fas fa-phone"></i> +91 94401 75900</p><p><i class="fas fa-envelope"></i> aryanvaruna@gmail.com</p></div>
+                <div class="footer-section"><h3>🕉️ Purohith Services 卐 🐄</h3><p>Preserving Vedic traditions, music and spiritual wisdom. Brahmin & Gau importance: As per scriptures, serving cows (Gau Seva) and respecting Brahmins brings immense spiritual merit.</p></div>
+                <div class="footer-section"><h4>🔗 Quick Links</h4><a onclick="showPage('home')">🏠 Home</a><a onclick="showPage('gita')">📖 Bhagavad Gita Shlokas</a><a onclick="showPage('gauseva')">🐄 GauSeva</a><a onclick="showPage('gauproducts')">🪔 Cow Dung & Goumutra</a><a onclick="showPage('donation')">❤️ Donate</a><a onclick="showPage('horoscope')">⭐ Horoscope</a></div>
+                <div class="footer-section"><h4>🕉️ Vishnu Mantra</h4><p class="sanskrit-text">"शान्ताकारं भुजगशयनं पद्मनाभं सुरेशम्"</p><p>Lord Vishnu is the preserver. Chanting Vishnu Sahasranama grants peace and liberation.</p></div>
             </div>
-            <div class="footer-bottom"><p>&copy; 2024 Purohith Services. All rights reserved.</p></div>
+            <div class="footer-bottom"><p>ॐ श्री विष्णवे नमः | ॐ नमो भगवते वासुदेवाय | © 2025 Purohith Services | All rituals performed with Vedic purity</p></div>
         </div>
     </footer>
 
     <script>
-        // Page Navigation
-        function showPage(pageName) {
-            document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
-            document.getElementById(pageName + 'Page').classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            if (pageName === 'dashboard') loadDashboard();
+        // ======================= ACCURATE PANCHANGA (ORIGINAL) =======================
+        const tithiNamesFull = ["Pratipada","Dwitiya","Tritiya","Chaturthi","Panchami","Shashthi","Saptami","Ashtami","Navami","Dashami","Ekadashi","Dwadashi","Trayodashi","Chaturdashi","Purnima","Pratipada","Dwitiya","Tritiya","Chaturthi","Panchami","Shashthi","Saptami","Ashtami","Navami","Dashami","Ekadashi","Dwadashi","Trayodashi","Chaturdashi","Amavasya"];
+        function degToRad(d){return d*Math.PI/180;} function radToDeg(r){return r*180/Math.PI;} function norm(a){a%=360; if(a<0)a+=360; return a;}
+        function getMeanSunLongitude(jd){const n=jd-2451545.0; return norm(280.460+0.9856474*n);}
+        function getMeanMoonLongitude(jd){const n=jd-2451545.0; return norm(218.316+13.176396*n);}
+        function getJulianDate(date){const y=date.getUTCFullYear(), m=date.getUTCMonth()+1, d=date.getUTCDate(), h=date.getUTCHours(), min=date.getUTCMinutes(), s=date.getUTCSeconds(); let a=Math.floor((14-m)/12), Y=y+4800-a, M=m+12*a-3; let jd=d+Math.floor((153*M+2)/5)+365*Y+Math.floor(Y/4)-Math.floor(Y/100)+Math.floor(Y/400)-32045; jd+=(h-12)/24+min/1440+s/86400; return jd;}
+        function calculateTithi(jd){const sun=getMeanSunLongitude(jd), moon=getMeanMoonLongitude(jd); let t=(moon-sun)/12; if(t<0)t+=30; const idx=Math.floor(t); return {index:idx,name:tithiNamesFull[idx],fraction:t-idx};}
+        function getTithiEndTime(jd,current){let testJD=jd, step=0.01, target=(current.index+1)%30; for(let i=0;i<60;i++){if(calculateTithi(testJD).index===target)break; testJD+=step;} const endDate=new Date((testJD-2440587.5)*86400000); const ist=new Date(endDate.getTime()+5.5*3600000); return ist.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'})}
+        function updatePanchanga(){const now=new Date(), jd=getJulianDate(now), tithi=calculateTithi(jd); const paksha=tithi.index<15?"Shukla":"Krishna", num=(tithi.index%15)+1; let name=tithi.name; if(name==="Purnima")name="Pūrṇimā"; if(name==="Amavasya")name="Amāvasyā"; const tithiText=`${name} (${paksha} Pakṣa, ${num}/15)`; const istDate=now.toLocaleDateString('en-IN',{year:'numeric',month:'short',day:'numeric',timeZone:'Asia/Kolkata'}); const end=getTithiEndTime(jd,tithi); document.getElementById('dynamicTithi').innerHTML=`<i class="fas fa-calendar-alt"></i> ${tithiText}`; document.getElementById('dynamicDate').innerHTML=istDate; document.getElementById('tithiEndTime').innerHTML=`⏱️ Ends: ${end} IST`;}
+        updatePanchanga(); setInterval(updatePanchanga,60000);
+        
+        // ======================= ORIGINAL RITUALS & SERVICES DATA =======================
+        const ritualsData = [
+            { name: "Namakaranam", icon: "fas fa-baby-carriage", summary: "Naming ceremony on 11th/12th day. Invokes Lord Vishnu's protection. Chant 'ॐ नमो भगवते वासुदेवाय' 108 times. Brings long life & prosperity." },
+            { name: "Annaprasanam", icon: "fas fa-utensils", summary: "First rice feeding at 6-8 months. Invokes Annapurna & Vishnu as Annadata. Chant 'अन्नं ब्रह्म रसं विष्णुः' for healthy growth." },
+            { name: "Punyahavachanam", icon: "fas fa-water", summary: "Purification ceremony using holy water. Removes obstacles. Vishnu Sahasranama chanting invokes divine grace." },
+            { name: "Upanayanam", icon: "fas fa-thread", summary: "Sacred thread ceremony - second birth. Initiation into Gayatri mantra. Worship of Vishnu as Yajnapurusha." },
+            { name: "Vivaha (Wedding)", icon: "fas fa-ring", summary: "Vedic wedding with seven pheras. Invokes Vishnu & Lakshmi. 'विष्णुः प्रिया पत्नी' — Vishnu as protector." },
+            { name: "Gruha Pravesham", icon: "fas fa-home", summary: "House warming with Vastu Shanti. Invokes Vastupurusha Vishnu. Brings harmony & prosperity." },
+            { name: "Vivida Shanti", icon: "fas fa-peace", summary: "Graha Shanti, Navagraha homa. Remedies for planetary doshas. Sudarshana mantra destroys malefic effects." },
+            { name: "Gau Pooja", icon: "fas fa-cow", summary: "Worship of cows - Gau Aarti, Panchagavya. Cows are abode of Vishnu & Lakshmi. Removes sins & fulfills wishes." }
+        ];
+        const servicesList = [
+            { name: "16 Samskaras", icon: "fas fa-feather-alt", summary: "Complete lifecycle rituals from conception to cremation as per Grihya Sutras." },
+            { name: "Graha Shanti Homa", icon: "fas fa-sun", summary: "Planetary peace ceremonies with Navagraha mantras. Remedies for Mangal, Sade Sati." },
+            { name: "Carnatic Music", icon: "fas fa-music", summary: "Vocal & keyboard training by experts. Traditional kritis, bhajans." },
+            { name: "Vishnu Pooja", icon: "fas fa-praying-hands", summary: "Satyanarayana, Lakshmi Narayana, Vishnu Sahasranama chanting." }
+        ];
+
+        function generateRituals() {
+            const ritualsGrid = document.getElementById('ritualsGrid');
+            if(ritualsGrid) ritualsGrid.innerHTML = ritualsData.map(r => `<div class="card" onclick="showRitualSummary('${r.name}', \`${r.summary.replace(/`/g, "\\`")}\`)"><i class="${r.icon}"></i><h3>${r.name}</h3><p>Click for details</p></div>`).join('');
+            const servicesGrid = document.getElementById('servicesGrid');
+            if(servicesGrid) servicesGrid.innerHTML = servicesList.map(s => `<div class="card" onclick="showRitualSummary('${s.name}', \`${s.summary}\`)"><i class="${s.icon}"></i><h3>${s.name}</h3><p>${s.summary.substring(0,70)}</p></div>`).join('');
         }
 
-        function toggleMobileMenu() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        }
+        window.showRitualSummary = (title, summaryText) => {
+            const modal = document.getElementById('ritualModal');
+            const modalBody = document.getElementById('modalBody');
+            const vishnuShloka = `<div class="shloka-box"><div class="sanskrit-text">"ॐ विष्णवे नमः। शान्ताकारं भुजगशयनं पद्मनाभं सुरेशम्"</div><p>Salutations to Lord Vishnu, the lotus-eyed.</p></div>`;
+            modalBody.innerHTML = `<h2><i class="fas fa-om"></i> ${title}</h2><p>${summaryText}</p>${vishnuShloka}<button class="btn-primary" onclick="closeModal(); showPage('booking')">📅 Book This Ritual</button>`;
+            modal.style.display = 'flex';
+        };
+        function closeModal() { document.getElementById('ritualModal').style.display = 'none'; }
 
-        // Booking Form Submission
+        // ======================= ENHANCED HOROSCOPE DATA (NEW ANIMATED VERSION) =======================
+        const rashisData = [
+            { name: "Mesha", symbol: "🐏", lord: "Mars (Mangala)", element: "Fire", color: "Red", mantra: "ॐ क्रां क्रीं क्रौं सः मंगलाय नमः", remedy: "Chant Hanuman Chalisa, donate red lentils on Tuesdays.", prediction: "Today brings courage and new beginnings. Focus on leadership roles." },
+            { name: "Vrishabha", symbol: "🐂", lord: "Venus (Shukra)", element: "Earth", color: "White", mantra: "ॐ शुं शुक्राय नमः", remedy: "Offer white flowers to Lord Vishnu, feed cows with jaggery.", prediction: "Financial stability improves. Relationships bring joy." },
+            { name: "Mithuna", symbol: "👥", lord: "Mercury (Budha)", element: "Air", color: "Green", mantra: "ॐ बुं बुधाय नमः", remedy: "Recite Vishnu Sahasranama, donate green items.", prediction: "Communication excels. New learning opportunities arise." },
+            { name: "Karka", symbol: "🦀", lord: "Moon (Chandra)", element: "Water", color: "Silver", mantra: "ॐ श्रां श्रीं श्रौं सः चन्द्रमसे नमः", remedy: "Offer milk to Shiva Linga, chant 'Om Namo Narayanaya'.", prediction: "Emotional balance. Family matters resolved." },
+            { name: "Simha", symbol: "🦁", lord: "Sun (Surya)", element: "Fire", color: "Gold", mantra: "ॐ घृणि सूर्याय नमः", remedy: "Do Surya Namaskar, donate wheat.", prediction: "Leadership shines. Recognition at work." },
+            { name: "Kanya", symbol: "👧", lord: "Mercury (Budha)", element: "Earth", color: "Yellow", mantra: "ॐ बुं बुधाय नमः", remedy: "Serve food to Brahmins, chant Lakshmi Ashtakam.", prediction: "Health improves. Organizational skills peak." },
+            { name: "Tula", symbol: "⚖️", lord: "Venus (Shukra)", element: "Air", color: "Blue", mantra: "ॐ शुं शुक्राय नमः", remedy: "Offer white sandalwood to Vishnu, donate clothes.", prediction: "Partnerships blessed. Artistic expression flourishes." },
+            { name: "Vrishchika", symbol: "🦂", lord: "Mars (Mangala)", element: "Water", color: "Dark Red", mantra: "ॐ क्रां क्रीं क्रौं सः मंगलाय नमः", remedy: "Perform Rudra-Vishnu homa, chant Sudarshana mantra.", prediction: "Hidden opportunities revealed. Transformative energy." },
+            { name: "Dhanu", symbol: "🏹", lord: "Jupiter (Guru)", element: "Fire", color: "Orange", mantra: "ॐ ग्रां ग्रीं ग्रौं सः गुरवे नमः", remedy: "Recite Hayagriva stotra, donate yellow fruits.", prediction: "Wisdom expands. Travel prospects bright." },
+            { name: "Makara", symbol: "🐊", lord: "Saturn (Shani)", element: "Earth", color: "Brown", mantra: "ॐ प्रां प्रीं प्रौं सः शनैश्चराय नमः", remedy: "Light sesame oil lamp on Saturdays, chant Vishnu mantra.", prediction: "Career growth steady. Discipline rewarded." },
+            { name: "Kumbha", symbol: "🏺", lord: "Saturn (Shani)", element: "Air", color: "Blue", mantra: "ॐ प्रां प्रीं प्रौं सः शनैश्चराय नमः", remedy: "Feed birds, chant 'Om Vasudevaya namah'.", prediction: "Innovation brings success. Social circles active." },
+            { name: "Meena", symbol: "🐟", lord: "Jupiter (Guru)", element: "Water", color: "Light Green", mantra: "ॐ ग्रां ग्रीं ग्रौं सः गुरवे नमः", remedy: "Chant Govinda Damodara Stotram, donate to cows.", prediction: "Spiritual insights deepen. Compassion leads to joy." }
+        ];
+        
+        function generateEnhancedRashiGrid() {
+            const container = document.getElementById('rashiDynamicGrid');
+            if(!container) return;
+            container.innerHTML = rashisData.map((r, idx) => `
+                <div class="rashi-card" data-rashi="${r.name}" onclick="showAnimatedHoroscope('${r.name}')">
+                    <div class="rashi-symbol">${r.symbol}</div>
+                    <div class="rashi-name">${r.name}</div>
+                    <div class="rashi-lord"><i class="fas fa-crown"></i> ${r.lord}</div>
+                    <div class="rashi-detail">
+                        <span><i class="fas fa-fire"></i> ${r.element}</span>
+                        <span><i class="fas fa-palette"></i> ${r.color}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        window.showAnimatedHoroscope = (rashiName) => {
+            const rashi = rashisData.find(r => r.name === rashiName);
+            if(!rashi) return;
+            document.querySelectorAll('.rashi-card').forEach(card => card.classList.remove('active-rashi'));
+            const selectedCard = document.querySelector(`.rashi-card[data-rashi="${rashiName}"]`);
+            if(selectedCard) selectedCard.classList.add('active-rashi');
+            const resultDiv = document.getElementById('horoscopeResult');
+            resultDiv.style.animation = 'none';
+            setTimeout(() => resultDiv.style.animation = 'fadeSlideUp 0.5s ease-out', 10);
+            resultDiv.innerHTML = `
+                <div class="rashi-result-header">
+                    <div class="rashi-result-symbol">${rashi.symbol}</div>
+                    <div class="rashi-result-title">
+                        <h2>${rashi.name} Rashi <span style="font-size:1rem;">(${rashi.lord})</span></h2>
+                        <p><i class="fas fa-globe-asia"></i> Element: ${rashi.element} | Color: ${rashi.color}</p>
+                    </div>
+                </div>
+                <div class="shloka-box" style="margin:0 0 20px 0;">
+                    <div class="sanskrit-text">✨ Daily Phala ✨</div>
+                    <p>${rashi.prediction}</p>
+                </div>
+                <div class="remedy-box">
+                    <i class="fas fa-praying-hands"></i> <strong>Vedic Remedy:</strong> ${rashi.remedy}
+                </div>
+                <div class="mantra-chant">
+                    <i class="fas fa-om"></i> Chant this mantra: ${rashi.mantra}
+                </div>
+                <div style="margin-top:25px; text-align:center;">
+                    <button onclick="showPage('booking')" class="btn-primary"><i class="fas fa-calendar-check"></i> Book Astrology Consultation</button>
+                </div>
+            `;
+            window.scrollTo({top: document.getElementById('horoscopePage').offsetTop + 100, behavior: 'smooth'});
+        };
+
+        // ORIGINAL FUNCTIONS (donation, booking, dashboard, contact)
+        window.donateAmount = (amt, purpose) => { window.open(`https://wa.me/918328059590?text=I%20want%20to%20donate%20₹${amt}%20for%20${purpose}%20UPI%20aryanvaruna@oksbi`, '_blank'); };
+        window.copyUPI = () => { navigator.clipboard.writeText('aryanvaruna@oksbi'); alert('UPI ID copied'); };
+        window.orderGauProduct = (product) => { window.open(`https://wa.me/918328059590?text=I%20want%20to%20order%20${product}.%20Please%20share%20payment%20details%20and%20delivery%20options.`, '_blank'); alert(`Order request for ${product} sent via WhatsApp.`); };
         document.getElementById('bookingForm')?.addEventListener('submit', function(e) {
             e.preventDefault();
-            const booking = {
-                id: Date.now().toString(),
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                email: document.getElementById('email').value,
-                ritual: document.getElementById('ritual').value,
-                eventDate: document.getElementById('date').value,
-                eventTime: document.getElementById('time').value,
-                address: document.getElementById('address').value,
-                details: document.getElementById('details').value,
-                status: 'pending',
-                createdAt: new Date().toISOString()
-            };
-            
+            const booking = { id: Date.now().toString(), name: document.getElementById('name').value, phone: document.getElementById('phone').value, ritual: document.getElementById('ritual').value, eventDate: document.getElementById('date').value, address: document.getElementById('address').value, status: 'pending' };
             let bookings = JSON.parse(localStorage.getItem('purohithBookings')) || [];
             bookings.unshift(booking);
             localStorage.setItem('purohithBookings', JSON.stringify(bookings));
-            
-            const message = `*NEW RITUAL BOOKING*%0A%0A*Ritual:* ${booking.ritual}%0A*Name:* ${booking.name}%0A*Phone:* ${booking.phone}%0A*Date:* ${booking.eventDate}%0A*Address:* ${booking.address}`;
-            window.open(`https://wa.me/918328059590?text=${message}`, '_blank');
-            
-            alert('✓ Booking saved! WhatsApp notification sent to +91 83280 59590');
+            window.open(`https://wa.me/918328059590?text=New%20Booking%20from%20${booking.name}%20for%20${booking.ritual}%20on%20${booking.eventDate}`, '_blank');
+            alert('✓ Booking saved! Notification sent.');
             this.reset();
             showPage('dashboard');
         });
-
-        // Contact Form
-        document.getElementById('contactForm')?.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('contactName').value;
-            const phone = document.getElementById('contactPhone').value;
-            const subject = document.getElementById('contactSubject').value;
-            const message = document.getElementById('contactMessage').value;
-            const whatsappMsg = `*Contact Message*%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Subject:* ${subject}%0A*Message:* ${message}`;
-            window.open(`https://wa.me/918328059590?text=${whatsappMsg}`, '_blank');
-            alert('Message sent! We will contact you shortly.');
-            this.reset();
-        });
-
-        // Dashboard Functions
-        function loadDashboard() {
+        window.loadDashboard = () => {
             let bookings = JSON.parse(localStorage.getItem('purohithBookings')) || [];
-            document.getElementById('totalBookings').textContent = bookings.length;
-            document.getElementById('pendingBookings').textContent = bookings.filter(b => b.status === 'pending').length;
-            document.getElementById('confirmedBookings').textContent = bookings.filter(b => b.status === 'confirmed').length;
-            document.getElementById('uniqueClients').textContent = new Set(bookings.map(b => b.phone)).size;
-            
+            document.getElementById('totalBookings').innerText = bookings.length;
+            document.getElementById('pendingBookings').innerText = bookings.filter(b=>b.status==='pending').length;
+            document.getElementById('uniqueClients').innerText = new Set(bookings.map(b=>b.phone)).size;
             const container = document.getElementById('bookingsList');
-            if (bookings.length === 0) {
-                container.innerHTML = '<div class="empty-state"><i class="fas fa-calendar-alt" style="font-size: 4rem;"></i><h3>No Bookings Yet</h3><p>When someone books, it will appear here.</p></div>';
-                return;
-            }
-            
-            let html = '';
-            bookings.forEach((b, i) => {
-                html += `<div class="booking-item"><h3>📿 ${b.ritual}</h3><div class="booking-details"><p><strong>👤 Name:</strong> ${b.name}</p><p><strong>📞 Phone:</strong> ${b.phone}</p><p><strong>📅 Date:</strong> ${b.eventDate}</p><p><strong>📍 Address:</strong> ${b.address}</p></div
+            if(!bookings.length) { container.innerHTML = '<div class="card">📭 No bookings yet.</div>'; return; }
+            container.innerHTML = bookings.map(b => `<div class="booking-item"><h3>📿 ${b.ritual}</h3><p><strong>${b.name}</strong> | ${b.phone} | Date: ${b.eventDate}</p><a href="https://wa.me/${b.phone}" class="whatsapp-link" target="_blank">Contact Client</a> <button class="btn-secondary" onclick="deleteBooking('${b.id}')">Delete</button></div>`).join('');
+        };
+        window.deleteBooking = (id) => { if(confirm('Delete?')) { let b = JSON.parse(localStorage.getItem('purohithBookings')) || []; b = b.filter(i=>i.id !== id); localStorage.setItem('purohithBookings', JSON.stringify(b)); loadDashboard(); } };
+        document.getElementById('contactForm')?.addEventListener('submit', (e) => { e.preventDefault(); const name = document.getElementById('contactName').value; const phone = document.getElementById('contactPhone').value; const msg = document.getElementById('contactMsg').value; window.open(`https://wa.me/918328059590?text=Message%20from%20${name}%20(${phone})%3A%20${encodeURIComponent(msg)}`,'_blank'); alert('Message sent'); e.target.reset(); });
+        window.showPage = function(pageName) {
+            document.querySelectorAll('[id$="Page"]').forEach(p => p.classList.add('hidden'));
+            document.getElementById(pageName + 'Page').classList.remove('hidden');
+            if(pageName === 'dashboard') loadDashboard();
+            window.scrollTo({top:0,behavior:'smooth'});
+        };
+        function toggleMenu() { document.querySelector('.nav-links').classList.toggle('active'); }
+        if(document.getElementById('date')) { let d = new Date(); d.setDate(d.getDate()+7); document.getElementById('date').min = d.toISOString().split('T')[0]; }
+        generateRituals(); generateEnhancedRashiGrid(); showPage('home');
+    </script>
+</body>
+</html>
