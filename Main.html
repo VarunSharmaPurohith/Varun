@@ -322,7 +322,65 @@
         .whatsapp-link { background: #25D366; color: white; padding: 6px 12px; border-radius: 20px; text-decoration: none; display: inline-block; margin-top: 8px; }
         .booking-item { background: white; border-radius: 16px; padding: 18px; margin-bottom: 15px; border-left: 5px solid #FFD700; }
         .gau-product { border: 2px solid #FFD700; background: #fffaf0; }
-        .rashi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin: 20px 0; } /* kept for compatibility but not used */
+        
+        /* Vastu Aaya Table Styles */
+        .aaya-calc-card {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        .aaya-input-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+        .aaya-input-group input {
+            flex: 1;
+            padding: 14px 20px;
+            border: 2px solid #f0e0c0;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: 0.3s;
+        }
+        .aaya-input-group input:focus { border-color: #FFA500; }
+        .aaya-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #fffef7;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .aaya-table th, .aaya-table td {
+            padding: 14px 12px;
+            text-align: left;
+            border-bottom: 1px solid #f0e0c0;
+        }
+        .aaya-table th {
+            background: #8B4513;
+            color: #FFD700;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-align: left;
+        }
+        .aaya-table tr:last-child td { border-bottom: none; }
+        .aaya-table tr:hover { background: #fff5e6; }
+        .result-badge {
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .shubh { background: #e6f7e6; color: #2e7d32; border-left: 4px solid #2e7d32; padding: 10px 15px; }
+        .ashubh { background: #ffe6e6; color: #c62828; border-left: 4px solid #c62828; padding: 10px 15px; }
+        .vastu-value { font-weight: 600; color: #8B4513; }
     </style>
 </head>
 <body>
@@ -338,9 +396,11 @@
                 </div>
                 <ul class="nav-links">
                     <li><a onclick="showPage('home')">🏠 Home</a></li><li><a onclick="showPage('services')">✨ Services</a></li>
-                    <li><a onclick="showPage('rituals')">📿 Rituals</a></li><li><a onclick="showPage('music')">🎵 Music</a></li>
+                    <li><a onclick="showPage('rituals')">📿 Rituals</a></li>
+                    <li><a onclick="showPage('music')">🎵 Music</a></li>
                     <li><a onclick="showPage('gita')">📖 Bhagavad Gita</a></li>
                     <li><a onclick="showPage('horoscope')">⭐ Horoscope</a></li>
+                    <li><a onclick="showPage('vastu')">🏠 Vastu & Aaya</a></li>
                     <li><a onclick="showPage('gauseva')">🐄 GauSeva</a></li>
                     <li><a onclick="showPage('gauproducts')">🪔 Cow Dung & Goumutra</a></li>
                     <li><a onclick="showPage('donation')">❤️ Donate</a></li>
@@ -381,13 +441,41 @@
     <!-- GITA PAGE (ORIGINAL) -->
     <div id="gitaPage" class="hidden"><section class="hero"><h1>📖 श्रीमद् भगवद् गीता 卐</h1><p>Free Weekly Classes - Open to All</p></section><div class="container"><div class="gita-section"><h2>📅 Schedule: Sunday 9:00 AM & Wednesday 7:00 PM (Online Zoom)</h2><div class="shloka-box"><div class="sanskrit-text">"योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय। सिद्ध्यसिद्ध्योः समो भूत्वा समत्वं योग उच्यते॥" (Gita 2.48)</div><p>🧘 Established in Yoga, perform actions abandoning attachment, remaining balanced in success and failure.</p></div><div class="shloka-box"><div class="sanskrit-text">"मयि सर्वमिदं प्रोक्तं सूत्रे मणिगणा इव। तत्क्षरं परमं ब्रह्म तद्विष्णोः परमं पदम्॥" (Gita 7.7)</div><p>🔱 Everything rests in Me like gems on a thread. That Supreme Brahman is the Supreme Abode of Vishnu.</p></div><div class="shloka-box"><div class="sanskrit-text">"सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज। अहं त्वां सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः॥" (Gita 18.66)</div><p>🕉️ Abandon all varieties of dharma and surrender unto Me alone. I shall liberate you from all sins.</p></div><button onclick="window.open('https://wa.me/918328059590?text=Join%20Free%20Gita%20Classes')" class="btn-primary">📖 Join Free Classes on WhatsApp</button></div></div></div>
 
-    <!-- ==================== ENHANCED HOROSCOPE PAGE (ONLY THIS PAGE IS ENHANCED) ==================== -->
+    <!-- HOROSCOPE PAGE (ENHANCED) -->
     <div id="horoscopePage" class="hidden">
         <section class="hero"><h1>⭐ Rashi Phala & Vedic Astrology 卐</h1><p>Select your Rashi for today's prediction, remedies & Vishnu mantras</p></section>
         <div class="container">
             <div id="rashiDynamicGrid" class="rashi-zodiac-grid"></div>
             <div id="horoscopeResult" class="horoscope-result-card">
                 <div style="text-align:center; opacity:0.8;"><i class="fas fa-star-of-life" style="font-size:3rem; color:#FFD700;"></i><p>🌙 Click on your Rashi to receive personalized guidance, planetary remedies and powerful Vishnu shlokas.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VASTU CONSULTATION PAGE WITH COMPLETE AAYA CALCULATION -->
+    <div id="vastuPage" class="hidden">
+        <section class="hero"><h1>🏠 Vastu Consultation & Aaya Calculation 卐</h1><p>Harmonize your living spaces with ancient Vedic science | Length & Breadth based analysis</p></section>
+        <div class="container">
+            <div class="aaya-calc-card">
+                <h2 style="color:#8B4513; text-align:center; margin-bottom:20px;"><i class="fas fa-ruler-combined"></i> Vastu Aaya Calculator</h2>
+                <p style="text-align:center; margin-bottom:25px;">Enter the length and breadth of your property (in feet) to get comprehensive Vastu analysis including Aaya, Nakshatra, Yoga, Graha, and more as per ancient Vedic texts.</p>
+                <div class="aaya-input-group">
+                    <input type="number" id="lengthInput" placeholder="Length (in feet)" step="any" value="30">
+                    <input type="number" id="breadthInput" placeholder="Breadth (in feet)" step="any" value="20">
+                    <button class="btn-primary" onclick="calculateVastuAaya()"><i class="fas fa-calculator"></i> Calculate</button>
+                </div>
+                <div id="aayaResultArea" style="margin-top:25px;">
+                    <!-- dynamic comprehensive table will appear here -->
+                </div>
+                <div class="shloka-box" style="margin-top:30px;">
+                    <div class="sanskrit-text">"आयादिषड्विधं ज्ञेयं वास्तुमानं शुभाशुभम्। आयश्च व्यय एवं च नक्षत्रं योनिरेव च॥"</div>
+                    <p>🏛️ The measurement of a building determines Aaya (income), Vyaya (expenditure), Nakshatra, Yoni, and other factors. Proper dimensions bring prosperity and harmony.</p>
+                </div>
+                <div style="background:#f9f2e6; border-radius:24px; padding:20px; margin-top:20px;">
+                    <h3><i class="fas fa-chalkboard-teacher"></i> Expert Vastu Consultation</h3>
+                    <p>For personalized Vastu remedies, site analysis, and dosha corrections, book a consultation with our certified Vastu Acharya.</p>
+                    <button onclick="showPage('booking')" class="btn-primary" style="margin-top:12px;">📞 Book Vastu Consultation</button>
+                </div>
             </div>
         </div>
     </div>
@@ -417,7 +505,7 @@
     <div id="donationPage" class="hidden"><section class="hero"><h1>❤️ Donations for Vedic Causes 卐</h1><p>Support Annadanam, Temple renovation, Music education</p></section><div class="container"><div class="donation-section"><h2>🙏 Your generosity sustains dharma</h2><div class="cards-grid"><div class="card" onclick="donateAmount(101,'General Donation')"><i class="fas fa-seedling"></i><h3>General Donation</h3><p>₹101</p></div><div class="card" onclick="donateAmount(501,'Annadanam')"><i class="fas fa-utensils"></i><h3>Annadanam</h3><p>₹501</p></div><div class="card" onclick="donateAmount(1001,'Music Education')"><i class="fas fa-music"></i><h3>Sponsor Music Class</h3><p>₹1,001</p></div><div class="card" onclick="donateAmount(5001,'Temple Renovation')"><i class="fas fa-temple"></i><h3>Temple Renovation</h3><p>₹5,001</p></div></div><div class="upi-container" style="background:white; padding:25px; border-radius:25px; margin-top:20px; text-align:center"><h3>🔹 UPI ID: <strong style="color:#8B4513">aryanvaruna@oksbi</strong></h3><button class="btn-primary" onclick="copyUPI()"><i class="fas fa-copy"></i> Copy UPI ID</button><p style="margin-top:15px">After payment, send screenshot on WhatsApp for confirmation & blessings.</p></div></div></div></div>
 
     <!-- BOOKING PAGE (ORIGINAL) -->
-    <div id="bookingPage" class="hidden"><section class="hero"><h1>📅 Book a Ritual or Class 卐</h1><p>Fill the form to schedule your ceremony, music class or order products</p></section><div class="container"><div class="cards-grid" style="grid-template-columns:1fr 1fr"><div class="card"><h3>📞 Need help?</h3><p><i class="fas fa-phone"></i> +91 83280 59590<br><i class="fab fa-whatsapp"></i> +91 83280 59590<br><i class="fas fa-envelope"></i> aryanvaruna@gmail.com</p><p>Advance booking: 7-10 days recommended.</p></div><form id="bookingForm" style="background:white; padding:30px; border-radius:30px"><h3>📿 Booking Request</h3><input type="text" id="name" placeholder="Full Name *" required style="width:100%; padding:12px; margin:8px 0; border-radius:40px; border:1px solid #ccc"><input type="tel" id="phone" placeholder="Phone Number *" required style="width:100%; padding:12px; margin:8px 0; border-radius:40px"><select id="ritual" required style="width:100%; padding:12px; margin:8px 0; border-radius:40px"><option value="">Select Service</option><option>Punyahavachanam</option><option>Vivida Shanti</option><option>Carnatic Vocal Classes</option><option>Keyboard Classes</option><option>Bhagavad Gita Classes (Free)</option><option>Namakaranam</option><option>Annaprasanam</option><option>Upanayanam</option><option>Traditional Wedding</option><option>Gruha Pravesham</option><option>Horoscope Consultation</option><option>Gau Pooja</option><option>Order Cow Dung Cakes</option><option>Order Goumutra</option></select><input type="date" id="date" required style="width:100%; padding:12px; margin:8px 0; border-radius:40px"><textarea id="address" rows="2" placeholder="Address / Venue / Delivery Address" style="width:100%; padding:12px; border-radius:20px"></textarea><button type="submit" class="btn-primary">📩 Submit Request →</button></form></div></div></div>
+    <div id="bookingPage" class="hidden"><section class="hero"><h1>📅 Book a Ritual or Class 卐</h1><p>Fill the form to schedule your ceremony, music class or order products</p></section><div class="container"><div class="cards-grid" style="grid-template-columns:1fr 1fr"><div class="card"><h3>📞 Need help?</h3><p><i class="fas fa-phone"></i> +91 83280 59590<br><i class="fab fa-whatsapp"></i> +91 83280 59590<br><i class="fas fa-envelope"></i> aryanvaruna@gmail.com</p><p>Advance booking: 7-10 days recommended.</p></div><form id="bookingForm" style="background:white; padding:30px; border-radius:30px"><h3>📿 Booking Request</h3><input type="text" id="name" placeholder="Full Name *" required style="width:100%; padding:12px; margin:8px 0; border-radius:40px; border:1px solid #ccc"><input type="tel" id="phone" placeholder="Phone Number *" required style="width:100%; padding:12px; margin:8px 0; border-radius:40px"><select id="ritual" required style="width:100%; padding:12px; margin:8px 0; border-radius:40px"><option value="">Select Service</option><option>Punyahavachanam</option><option>Vivida Shanti</option><option>Carnatic Vocal Classes</option><option>Keyboard Classes</option><option>Bhagavad Gita Classes (Free)</option><option>Namakaranam</option><option>Annaprasanam</option><option>Upanayanam</option><option>Traditional Wedding</option><option>Gruha Pravesham</option><option>Horoscope Consultation</option><option>Gau Pooja</option><option>Order Cow Dung Cakes</option><option>Order Goumutra</option><option>Vastu Consultation</option></select><input type="date" id="date" required style="width:100%; padding:12px; margin:8px 0; border-radius:40px"><textarea id="address" rows="2" placeholder="Address / Venue / Delivery Address" style="width:100%; padding:12px; border-radius:20px"></textarea><button type="submit" class="btn-primary">📩 Submit Request →</button></form></div></div></div>
 
     <!-- DASHBOARD PAGE (ORIGINAL) -->
     <div id="dashboardPage" class="hidden"><section class="hero"><h1>📊 Booking Dashboard 卐</h1><p>Manage all client bookings & orders</p></section><div class="container"><div class="cards-grid" style="grid-template-columns:repeat(3,1fr)"><div class="card"><h3>📋 Total Bookings</h3><h2 id="totalBookings">0</h2></div><div class="card"><h3>⏳ Pending</h3><h2 id="pendingBookings">0</h2></div><div class="card"><h3>👥 Unique Clients</h3><h2 id="uniqueClients">0</h2></div></div><div id="bookingsList"></div><button class="btn-primary" onclick="loadDashboard()"><i class="fas fa-sync-alt"></i> Refresh</button></div></div>
@@ -429,7 +517,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section"><h3>🕉️ Purohith Services 卐 🐄</h3><p>Preserving Vedic traditions, music and spiritual wisdom. Brahmin & Gau importance: As per scriptures, serving cows (Gau Seva) and respecting Brahmins brings immense spiritual merit.</p></div>
-                <div class="footer-section"><h4>🔗 Quick Links</h4><a onclick="showPage('home')">🏠 Home</a><a onclick="showPage('gita')">📖 Bhagavad Gita Shlokas</a><a onclick="showPage('gauseva')">🐄 GauSeva</a><a onclick="showPage('gauproducts')">🪔 Cow Dung & Goumutra</a><a onclick="showPage('donation')">❤️ Donate</a><a onclick="showPage('horoscope')">⭐ Horoscope</a></div>
+                <div class="footer-section"><h4>🔗 Quick Links</h4><a onclick="showPage('home')">🏠 Home</a><a onclick="showPage('gita')">📖 Bhagavad Gita Shlokas</a><a onclick="showPage('gauseva')">🐄 GauSeva</a><a onclick="showPage('gauproducts')">🪔 Cow Dung & Goumutra</a><a onclick="showPage('donation')">❤️ Donate</a><a onclick="showPage('horoscope')">⭐ Horoscope</a><a onclick="showPage('vastu')">🏠 Vastu Consultation</a></div>
                 <div class="footer-section"><h4>🕉️ Vishnu Mantra</h4><p class="sanskrit-text">"शान्ताकारं भुजगशयनं पद्मनाभं सुरेशम्"</p><p>Lord Vishnu is the preserver. Chanting Vishnu Sahasranama grants peace and liberation.</p></div>
             </div>
             <div class="footer-bottom"><p>ॐ श्री विष्णवे नमः | ॐ नमो भगवते वासुदेवाय | © 2025 Purohith Services | All rituals performed with Vedic purity</p></div>
@@ -482,7 +570,7 @@
         };
         function closeModal() { document.getElementById('ritualModal').style.display = 'none'; }
 
-        // ======================= ENHANCED HOROSCOPE DATA (NEW ANIMATED VERSION) =======================
+        // ======================= ENHANCED HOROSCOPE DATA =======================
         const rashisData = [
             { name: "Mesha", symbol: "🐏", lord: "Mars (Mangala)", element: "Fire", color: "Red", mantra: "ॐ क्रां क्रीं क्रौं सः मंगलाय नमः", remedy: "Chant Hanuman Chalisa, donate red lentils on Tuesdays.", prediction: "Today brings courage and new beginnings. Focus on leadership roles." },
             { name: "Vrishabha", symbol: "🐂", lord: "Venus (Shukra)", element: "Earth", color: "White", mantra: "ॐ शुं शुक्राय नमः", remedy: "Offer white flowers to Lord Vishnu, feed cows with jaggery.", prediction: "Financial stability improves. Relationships bring joy." },
@@ -548,6 +636,132 @@
             window.scrollTo({top: document.getElementById('horoscopePage').offsetTop + 100, behavior: 'smooth'});
         };
 
+        // ======================= COMPREHENSIVE VASTU AAYA CALCULATION =======================
+        const aayaTypes = [
+            { name: "ध्वजा (Dhwaja)", meaning: "Flag", effect: "Victory, prosperity, growth", shubh: true },
+            { name: "धूम्र (Dhoomra)", meaning: "Smoke", effect: "Obstacles, delays", shubh: false },
+            { name: "सिंह (Simha)", meaning: "Lion", effect: "Courage, authority, leadership", shubh: true },
+            { name: "श्वा (Shva)", meaning: "Dog", effect: "Strife, quarrels, instability", shubh: false },
+            { name: "वृषभ (Vrishabha)", meaning: "Bull", effect: "Stability, wealth, agriculture", shubh: true },
+            { name: "खर (Khara)", meaning: "Donkey", effect: "Hard work without results", shubh: false },
+            { name: "गज (Gaja)", meaning: "Elephant", effect: "Royal status, wisdom, longevity", shubh: true },
+            { name: "काक (Kaka)", meaning: "Crow", effect: "Loss, conflicts, health issues", shubh: false }
+        ];
+        
+        const nakshatraNames = ["Ashwini", "Bharani", "Krittika", "Rohini", "Mrigashira", "Ardra", "Punarvasu", "Pushya", "Ashlesha", "Magha", "Purva Phalguni", "Uttara Phalguni", "Hasta", "Chitra", "Swati", "Vishakha", "Anuradha", "Jyeshtha", "Mula", "Purva Ashadha", "Uttara Ashadha", "Shravana", "Dhanishtha", "Shatabhisha", "Purva Bhadrapada", "Uttara Bhadrapada", "Revati"];
+        
+        const grahaNames = ["Sun (Surya)", "Moon (Chandra)", "Mars (Mangala)", "Mercury (Budha)", "Jupiter (Guru)", "Venus (Shukra)", "Saturn (Shani)", "Rahu", "Ketu"];
+        
+        const yogaNames = ["Vishkumbha", "Priti", "Ayushman", "Saubhagya", "Shobhana", "Atiganda", "Sukarma", "Dhriti", "Shoola", "Ganda", "Vriddhi", "Dhruva", "Vyaghata", "Harshana", "Vajra", "Siddhi", "Vyatipata", "Variyana", "Parigha", "Shiva", "Siddha", "Sadhya", "Shubha", "Shukla", "Brahma", "Indra", "Vaidhriti"];
+        
+        window.calculateVastuAaya = function() {
+            let length = parseFloat(document.getElementById('lengthInput').value);
+            let breadth = parseFloat(document.getElementById('breadthInput').value);
+            if(isNaN(length) || isNaN(breadth) || length <=0 || breadth <=0){
+                alert("Please enter valid positive numbers for length and breadth.");
+                return;
+            }
+            
+            // Calculate area
+            let area = length * breadth;
+            let perimeter = 2 * (length + breadth);
+            let sum = length + breadth;
+            
+            // Aaya Calculation: (Length + Breadth) * 8 % 8
+            let aayaValue = (sum * 8) % 8;
+            let aayaIndex = Math.floor(aayaValue);
+            let aayaResult = aayaTypes[aayaIndex];
+            
+            // Credit (Aaya) - based on sum mod 9
+            let credit = (Math.floor(sum * 9) % 9) + 1;
+            let creditResult = credit <= 5 ? "शुभ (Auspicious)" : "अशुभ (Inauspicious)";
+            
+            // Debit (Vyaya) - based on perimeter mod 9
+            let debit = (Math.floor(perimeter * 9) % 9) + 1;
+            let debitResult = debit <= 5 ? "शुभ (Auspicious)" : "अशुभ (Inauspicious)";
+            
+            // Week day based on sum
+            let weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            let weekIndex = Math.floor(sum * 7) % 7;
+            let weekDay = weekDays[weekIndex];
+            
+            // Tithi based on area
+            let tithiIndex = Math.floor(area * 30) % 30;
+            let tithiName = tithiNamesFull[tithiIndex];
+            let tithiPaksha = tithiIndex < 15 ? "Shukla Paksha" : "Krishna Paksha";
+            
+            // Property (Vastu Purusha position)
+            let propertyTypes = ["North-East (Eshanya)", "East (Purva)", "South-East (Agneya)", "South (Dakshina)", "South-West (Nairutya)", "West (Pashchima)", "North-West (Vayavya)", "North (Uttara)", "Center (Brahmasthana)"];
+            let propertyIndex = Math.floor(area * 9) % 9;
+            let property = propertyTypes[propertyIndex];
+            
+            // Lagna based on length
+            let lagnaIndex = Math.floor(length * 12) % 12;
+            let lagnaNames = ["Mesha", "Vrishabha", "Mithuna", "Karka", "Simha", "Kanya", "Tula", "Vrishchika", "Dhanu", "Makara", "Kumbha", "Meena"];
+            let lagna = lagnaNames[lagnaIndex];
+            
+            // Yoga based on sum
+            let yogaIndex = Math.floor(sum * 27) % 27;
+            let yoga = yogaNames[yogaIndex];
+            
+            // Graha (Planet) based on breadth
+            let grahaIndex = Math.floor(breadth * 9) % 9;
+            let graha = grahaNames[grahaIndex];
+            
+            // Kula (Family type)
+            let kulaTypes = ["Deva Kula (Divine)", "Manushya Kula (Human)", "Rakshasa Kula (Demonic)"];
+            let kulaIndex = Math.floor(area * 3) % 3;
+            let kula = kulaTypes[kulaIndex];
+            
+            // Kala (Time period effect)
+            let kalaTypes = ["Subha Kala (Auspicious)", "Madhya Kala (Neutral)", "Ashubha Kala (Inauspicious)"];
+            let kalaIndex = Math.floor(perimeter * 3) % 3;
+            let kala = kalaTypes[kalaIndex];
+            
+            // Nakshatra based on sum
+            let nakshatraIndex = Math.floor(sum * 27) % 27;
+            let nakshatra = nakshatraNames[nakshatraIndex];
+            
+            // Overall assessment
+            let auspiciousCount = 0;
+            if(aayaResult.shubh) auspiciousCount++;
+            if(credit <= 5) auspiciousCount++;
+            if(debit <= 5) auspiciousCount++;
+            if(kalaIndex === 0) auspiciousCount++;
+            
+            let overallVerdict = auspiciousCount >= 3 ? 
+                '<div class="result-badge shubh"><i class="fas fa-check-circle"></i> Overall Vastu Assessment: FAVOURABLE - This dimension brings prosperity, health, and harmony.</div>' :
+                '<div class="result-badge ashubh"><i class="fas fa-exclamation-triangle"></i> Overall Vastu Assessment: NEEDS REMEDY - Consult a Vastu expert for corrective measures like Vastu Yantra, entrance adjustment, or Griha Shanti Homa.</div>';
+            
+            let resultHTML = `
+                <h3 style="color:#8B4513; margin-bottom:20px;"><i class="fas fa-chart-line"></i> Vastu Analysis for Length=${length.toFixed(2)} ft, Breadth=${breadth.toFixed(2)} ft</h3>
+                <table class="aaya-table">
+                    <thead><tr><th>Parameter</th><th>Value / Result</th><th>Significance</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>📐 Total Area</strong></td><td class="vastu-value">${area.toFixed(2)} sq ft</td><td>Total built-up/plot area</td></tr>
+                        <tr><td><strong>💰 Credit (Aaya)</strong></td><td class="vastu-value">${credit} - ${creditResult}</td><td>Represents income and inflow of wealth</td></tr>
+                        <tr><td><strong>💸 Debit (Vyaya)</strong></td><td class="vastu-value">${debit} - ${debitResult}</td><td>Represents expenditure and outflow</td></tr>
+                        <tr><td><strong>📅 Week Day</strong></td><td class="vastu-value">${weekDay}</td><td>Associated planetary energy</td></tr>
+                        <tr><td><strong>🌙 Tithi</strong></td><td class="vastu-value">${tithiName} (${tithiPaksha})</td><td>Lunar day influence</td></tr>
+                        <tr><td><strong>🏛️ Property (Vastu Zone)</strong></td><td class="vastu-value">${property}</td><td>Dominant direction/zone</td></tr>
+                        <tr><td><strong>⭐ Lagna</strong></td><td class="vastu-value">${lagna}</td><td>Ascendant influence on property</td></tr>
+                        <tr><td><strong>🕉️ Yoga</strong></td><td class="vastu-value">${yoga}</td><td>Combined planetary influence</td></tr>
+                        <tr><td><strong>🌍 Graha (Planet)</strong></td><td class="vastu-value">${graha}</td><td>Ruling planet for this dimension</td></tr>
+                        <tr><td><strong>👨‍👩‍👧‍👦 Kula</strong></td><td class="vastu-value">${kula}</td><td>Family/lineage energy type</td></tr>
+                        <tr><td><strong>⏰ Kala</strong></td><td class="vastu-value">${kala}</td><td>Temporal effect on residents</td></tr>
+                        <tr><td><strong>✨ Nakshatra</strong></td><td class="vastu-value">${nakshatra}</td><td>Lunar mansion influence</td></tr>
+                        <tr><td><strong>🪔 Aaya Type</strong></td><td class="vastu-value">${aayaResult.name} - ${aayaResult.effect}</td><td>${aayaResult.shubh ? '🟢 Auspicious - Brings positive energy' : '🔴 Needs Remedial Action'}</td></tr>
+                    </tbody>
+                </table>
+                <div style="margin-top:25px; padding:15px; background:#faf3e0; border-radius:20px;">
+                    <p><strong>📜 Vedic Interpretation:</strong> Based on the dimensions provided, the ${aayaResult.name} Aaya indicates ${aayaResult.effect.toLowerCase()}. The Credit score of ${credit} suggests ${credit <= 5 ? "good inflow of resources" : "careful financial planning needed"}. The ruling Nakshatra ${nakshatra} brings ${nakshatra === "Rohini" || nakshatra === "Mrigashira" || nakshatra === "Pushya" ? "beneficial" : "mixed"} energies.</p>
+                    ${overallVerdict}
+                </div>
+            `;
+            
+            document.getElementById('aayaResultArea').innerHTML = resultHTML;
+        };
+
         // ORIGINAL FUNCTIONS (donation, booking, dashboard, contact)
         window.donateAmount = (amt, purpose) => { window.open(`https://wa.me/918328059590?text=I%20want%20to%20donate%20₹${amt}%20for%20${purpose}%20UPI%20aryanvaruna@oksbi`, '_blank'); };
         window.copyUPI = () => { navigator.clipboard.writeText('aryanvaruna@oksbi'); alert('UPI ID copied'); };
@@ -578,6 +792,13 @@
             document.querySelectorAll('[id$="Page"]').forEach(p => p.classList.add('hidden'));
             document.getElementById(pageName + 'Page').classList.remove('hidden');
             if(pageName === 'dashboard') loadDashboard();
+            if(pageName === 'vastu') {
+                setTimeout(function() {
+                    if(document.getElementById('lengthInput') && !document.getElementById('aayaResultArea').innerHTML.includes('Vastu Analysis')) {
+                        calculateVastuAaya();
+                    }
+                }, 100);
+            }
             window.scrollTo({top:0,behavior:'smooth'});
         };
         function toggleMenu() { document.querySelector('.nav-links').classList.toggle('active'); }
